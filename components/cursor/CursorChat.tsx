@@ -41,7 +41,7 @@ const CursorChat = ({
     >
       {cursorState.mode === CursorMode.Chat && (
         <>
-          <CursorSVG color="#000" />
+          {/* <CursorSVG color="#000" /> */}
 
           <div className="absolute left-2 top-5 leading-relaxed px-4 py-2 rounded-2xl bg-blue-500 text-sm">
             {cursorState.previousMessage && (
