@@ -11,14 +11,21 @@ type Props = {
 const Cursor = ({ color, x, y, message }: Props) => {
   return (
     <div
-      className="pointer-events-auto absolute top-0 left-0"
+      className="pointer-events-auto border border-rose-600 absolute top-0 left-0"
       style={{
         transform: `translateX(${x}px) translateY(${y}px)`,
       }}
     >
       <CursorSVG color={color} />
-      Cursor
+      {/* <span className="">Cursor</span> */}
       {/* Message / Name to be shown under cursor */}
+      {message &&
+      <div className="rounded-3xl absolute left-2 top-5 px-2 py-4 outline outline-green-400" style={{backgroundColor: color}}>
+        <p className="text-sm whitespace-nowrap leading-relaxed outline outline-amber-600">
+          {message}
+        </p>
+      </div>
+      }
     </div>
   );
 };
