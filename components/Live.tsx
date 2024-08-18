@@ -180,6 +180,9 @@ const Live = () => {
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
       className="h-screen w-full flex flex-col items-center justify-center border border-emerald-500"
+      style={{
+        cursor: "url(/cursor.svg) 0 0, auto",
+      }}
     >
       <h1 className="text-4xl">Collborative Canvas App</h1>
 
