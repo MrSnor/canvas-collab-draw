@@ -144,6 +144,12 @@ const Live = () => {
           mode: CursorMode.Hidden,
         });
       } else if (event.key === "e") {
+        // temporary solution for triggering the reaction selector while using the cursor chat
+        // if event target is a input element, don't trigger
+        if (event.target instanceof HTMLInputElement) {
+          return;
+        }
+
         setCursorState({
           mode: CursorMode.ReactionSelector,
         });
