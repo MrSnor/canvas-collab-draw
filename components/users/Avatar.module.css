@@ -13,7 +13,7 @@
 .avatar:before {
   content: attr(data-tooltip);
   position: absolute;
-  bottom: 100%;
+  top: 100%;
   opacity: 0;
   transition: opacity 0.15s ease;
   padding: 5px 10px;
