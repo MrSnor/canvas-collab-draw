@@ -3,7 +3,13 @@ import LeftSidebar from "@/components/LeftSidebar";
 import Live from "@/components/Live";
 import Navbar from "@/components/Navbar";
 import RightSidebar from "@/components/RightSidebar";
-import { useMutation, useOthers, useStorage } from "@/liveblocks.config";
+import {
+  useMutation,
+  useOthers,
+  useRedo,
+  useStorage,
+  useUndo,
+} from "@/liveblocks.config";
 import { useEffect, useRef, useState } from "react";
 import { fabric } from "fabric";
 import {
@@ -17,7 +23,7 @@ import {
 } from "@/lib/canvas";
 import { ActiveElement } from "@/types/type";
 import { defaultNavElement } from "@/constants";
-import { handleDelete } from "@/lib/key-events";
+import { handleDelete, handleKeyDown } from "@/lib/key-events";
 
 type shapes =
   | "rectangle"
@@ -28,6 +34,9 @@ type shapes =
   | "image";
 
 export default function Page() {
+  const undo = useUndo();
+  const redo = useRedo();
+
   const others = useOthers();
   // reference to the actual html canvas
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -148,6 +157,17 @@ export default function Page() {
 
     window.addEventListener("resize", () => {
       handleResize({ fabricRef });
+    });
+
+    window.addEventListener("keydown", (e: KeyboardEvent) => {
+      handleKeyDown({
+        e,
+        canvas: fabricRef.current,
+        undo,
+        redo,
+        syncShapeInStorage,
+        deleteShapeFromStorage,
+      });
     });
 
     return () => {
