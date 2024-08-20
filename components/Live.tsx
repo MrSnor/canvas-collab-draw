@@ -12,7 +12,11 @@ import ReactionSelector from "./reaction/ReactionButton";
 import FlyingReaction from "./reaction/FlyingReaction";
 import useInterval from "@/hooks/useInterval";
 
-const Live = () => {
+type PropTypes = {
+  canvasRef: React.MutableRefObject<HTMLCanvasElement | null>;
+};
+
+const Live = ({ canvasRef }: PropTypes) => {
   const others = useOthers();
   const [{ cursor }, updateMyPresence] = useMyPresence() as any;
   const [cursorState, setCursorState] = useState<CursorState>({
@@ -181,6 +185,7 @@ const Live = () => {
 
   return (
     <div
+      id="canvas"
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
       onPointerDown={handlePointerDown}
@@ -190,9 +195,11 @@ const Live = () => {
         cursor: "url(/cursor.svg) 0 0, auto",
       }}
     >
-      <h1 className="text-4xl">Collborative Canvas App</h1>
+      {/* <h1 className="text-4xl">Collborative Canvas App</h1>
 
-      <span>There are {others.length} other user(s) online</span>
+      <span>There are {others.length} other user(s) online</span> */}
+
+      <canvas ref={canvasRef}></canvas>
 
       <LiveCursors others={others} />
 
