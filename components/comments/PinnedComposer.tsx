@@ -1,12 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import { Composer, ComposerProps } from "@liveblocks/react-comments";
+import { Composer, ComposerProps } from "@liveblocks/react-ui";
 
 type Props = {
   onComposerSubmit: ComposerProps["onComposerSubmit"];
 };
 
+
+/**
+ * This function extends on the `Composer` component from Liveblocks to customize it.
+ * @param {Props} - The `PinnedComposer` component takes in a prop object `Props` which includes a
+ * function `onComposerSubmit` and other props.
+ * @returns {JSX.Element} - The extended `Composer` component.
+ */
 const PinnedComposer = ({ onComposerSubmit, ...props }: Props) => {
   return (
     <div className="absolute flex gap-4" {...props}>
