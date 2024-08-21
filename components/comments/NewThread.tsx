@@ -178,13 +178,14 @@ export const NewThread = ({ children }: Props) => {
       // create a new thread with the composer coords and cursor selectors
       createThread({
         body,
+        // @ts-ignore
         metadata: {
           x,
           y,
           resolved: false,
           zIndex: maxZIndex + 1,
-          quote: "",
-          time: 0
+          // quote: "",
+          // time: 0
         },
       });
 
