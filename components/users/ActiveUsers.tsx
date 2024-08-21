@@ -20,7 +20,7 @@ function ActiveUsers() {
         )}
 
         {/* Show other users' avatars */}
-        <div className="flex pl-3">
+        <div className="flex">
           {users.slice(0, 3).map(({ connectionId }) => {
             return (
               <Avatar
