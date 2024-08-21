@@ -245,7 +245,7 @@ export default function Page() {
       />
       <section className="h-full flex">
         <LeftSidebar allShapes={Array.from(canvasObjects)} />
-        <Live canvasRef={canvasRef} />
+        <Live canvasRef={canvasRef} undo={undo} redo={redo} />
         <RightSidebar
           elementAttributes={elementAttributes}
           setElementAttributes={setElementAttributes}
