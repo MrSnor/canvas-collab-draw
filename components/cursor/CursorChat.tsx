@@ -22,6 +22,7 @@ const CursorChat = ({
     if (event.key === "Enter") {
       setCursorState({
         mode: CursorMode.Chat,
+        // @ts-ignore
         previousMessage: cursorState.message,
         message: "",
       });

@@ -10,7 +10,9 @@ const client = createClient({
 // `user.presence` property. Must be JSON-serializable.
 type Presence = {
   cursor: { x: number, y: number } | null,
-  message: string | null
+  message: string | null,
+  cursorColor: string | null,
+  editingText: string | null,
 };
 
 // Optionally, Storage represents the shared document that persists in the
@@ -41,9 +43,12 @@ type RoomEvent = {
 // Optionally, when using Comments, ThreadMetadata represents metadata on
 // each thread. Can only contain booleans, strings, and numbers.
 export type ThreadMetadata = {
-  // resolved: boolean;
-  // quote: string;
-  // time: number;
+  resolved: boolean;
+  quote: string;
+  time: number;
+  zIndex: number;
+  x: number;
+  y: number;
 };
 
 // Room-level hooks, use inside `RoomProvider`

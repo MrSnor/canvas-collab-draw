@@ -205,7 +205,7 @@ export default function Home() {
     });
 
     window.addEventListener("resize", () => {
-      handleResize({ fabricRef });
+      handleResize({ canvas });
     });
 
     window.addEventListener("keydown", (e: KeyboardEvent) => {

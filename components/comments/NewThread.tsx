@@ -183,6 +183,8 @@ export const NewThread = ({ children }: Props) => {
           y,
           resolved: false,
           zIndex: maxZIndex + 1,
+          quote: "",
+          time: 0
         },
       });
 
