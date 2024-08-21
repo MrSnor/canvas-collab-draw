@@ -47,7 +47,7 @@ export const navElements = [
   {
     icon: "/assets/text.svg",
     value: "text",
-    name: "Text",
+    name: "Add Text",
   },
   {
     icon: "/assets/delete.svg",

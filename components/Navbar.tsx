@@ -10,6 +10,12 @@ import { Button } from "./ui/button";
 import ShapesMenu from "./ShapesMenu";
 import ActiveUsers from "./users/ActiveUsers";
 import { NewThread } from "./comments/NewThread";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const Navbar = ({
   activeElement,
@@ -26,56 +32,88 @@ const Navbar = ({
     <nav className="flex select-none items-center justify-between gap-4 bg-primary-black px-5 text-white">
       <Image src="/assets/logo.svg" alt="FigPro Logo" width={58} height={20} />
 
-      <ul className="flex flex-row">
-        {navElements.map((item: ActiveElement | any) => (
-          <li
-            key={item.name}
-            onClick={() => {
-              if (Array.isArray(item.value)) return;
-              handleActiveElement(item);
-            }}
-            className={`group px-2.5 py-5 flex justify-center items-center
+      <TooltipProvider>
+        <ul className="flex flex-row">
+          {navElements.map((item: ActiveElement | any) => (
+            <li
+              key={item.name}
+              onClick={() => {
+                if (Array.isArray(item.value)) return;
+                handleActiveElement(item);
+              }}
+              className={`group px-2.5 py-5 flex justify-center items-center
             ${
               isActive(item.value)
                 ? "bg-primary-green"
                 : "hover:bg-primary-grey-200"
             }
             `}
-          >
-            {/* If value is an array means it's a nav element with sub options i.e., dropdown */}
-            {Array.isArray(item.value) ? (
-              <ShapesMenu
-                item={item}
-                activeElement={activeElement}
-                imageInputRef={imageInputRef}
-                handleActiveElement={handleActiveElement}
-                handleImageUpload={handleImageUpload}
-              />
-            ) : item?.value === "comments" ? (
-              // If value is comments, trigger the NewThread component
-              <NewThread>
-                <Button className="relative w-5 h-5 object-contain">
-                  <Image
-                    src={item.icon}
-                    alt={item.name}
-                    fill
-                    className={isActive(item.value) ? "invert" : ""}
-                  />
-                </Button>
-              </NewThread>
-            ) : (
-              <Button className="relative w-5 h-5 object-contain">
-                <Image
-                  src={item.icon}
-                  alt={item.name}
-                  fill
-                  className={isActive(item.value) ? "invert" : ""}
-                />
-              </Button>
-            )}
-          </li>
-        ))}
-      </ul>
+            >
+              {/* If value is an array means it's a nav element with sub options i.e., dropdown */}
+              {Array.isArray(item.value) ? (
+                <Tooltip>
+                  <TooltipTrigger>
+                    <ShapesMenu
+                      item={item}
+                      activeElement={activeElement}
+                      imageInputRef={imageInputRef}
+                      handleActiveElement={handleActiveElement}
+                      handleImageUpload={handleImageUpload}
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent
+                    sideOffset={20}
+                    className="p-1 text-xs bg-black border-0"
+                  >
+                    <p>Draw Shape</p>
+                  </TooltipContent>
+                </Tooltip>
+              ) : item?.value === "comments" ? (
+                // If value is comments, trigger the NewThread component
+                <Tooltip>
+                  <TooltipTrigger>
+                    <NewThread>
+                      <Button className="relative w-5 h-5 object-contain">
+                        <Image
+                          src={item.icon}
+                          alt={item.name}
+                          fill
+                          className={isActive(item.value) ? "invert" : ""}
+                        />
+                      </Button>
+                    </NewThread>
+                  </TooltipTrigger>
+                  <TooltipContent
+                    sideOffset={20}
+                    className="p-1 text-xs bg-black border-0"
+                  >
+                    <p>Add Comment</p>
+                  </TooltipContent>
+                </Tooltip>
+              ) : (
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Button className="relative w-5 h-5 object-contain">
+                      <Image
+                        src={item.icon}
+                        alt={item.name}
+                        fill
+                        className={isActive(item.value) ? "invert" : ""}
+                      />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent
+                    sideOffset={20}
+                    className="p-1 text-xs bg-black border-0"
+                  >
+                    <p>{item.name}</p>
+                  </TooltipContent>
+                </Tooltip>
+              )}
+            </li>
+          ))}
+        </ul>
+      </TooltipProvider>
 
       <ActiveUsers />
     </nav>
