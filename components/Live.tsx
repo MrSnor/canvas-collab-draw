@@ -241,7 +241,7 @@ const Live = ({ canvasRef, undo, redo }: PropTypes) => {
 
         <canvas ref={canvasRef}></canvas>
 
-        <LiveCursors others={others} />
+        <LiveCursors />
 
         {cursor && (
           <CursorChat
