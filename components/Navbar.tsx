@@ -16,6 +16,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import ResetCanvasButton from "./ResetCanvasButton";
 
 const Navbar = ({
   activeElement,
@@ -39,6 +40,7 @@ const Navbar = ({
               key={item.name}
               onClick={() => {
                 if (Array.isArray(item.value)) return;
+                if (item?.value === "reset") return;
                 handleActiveElement(item);
               }}
               className={`group px-2.5 py-5 flex justify-center items-center
@@ -88,6 +90,22 @@ const Navbar = ({
                     className="p-1 text-xs bg-black border-0"
                   >
                     <p>Add Comment</p>
+                  </TooltipContent>
+                </Tooltip>
+              ) : item?.value === "reset" ? (
+                <Tooltip>
+                  <TooltipTrigger>
+                    <ResetCanvasButton
+                      handleActiveElement={handleActiveElement}
+                      item={item}
+                      isActive={isActive}
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent
+                    sideOffset={20}
+                    className="p-1 text-xs bg-black border-0"
+                  >
+                    <p>Reset Canvas</p>
                   </TooltipContent>
                 </Tooltip>
               ) : (
