@@ -12,8 +12,8 @@ export const createRectangle = (pointer: PointerEvent) => {
   const rect = new fabric.Rect({
     left: pointer.x,
     top: pointer.y,
-    width: 100,
-    height: 100,
+    width: 0,
+    height: 0,
     fill: "#aabbcc",
     objectId: uuidv4(),
   } as CustomFabricObject<fabric.Rect>);
@@ -25,8 +25,8 @@ export const createTriangle = (pointer: PointerEvent) => {
   return new fabric.Triangle({
     left: pointer.x,
     top: pointer.y,
-    width: 100,
-    height: 100,
+    width: 0,
+    height: 0,
     fill: "#aabbcc",
     objectId: uuidv4(),
   } as CustomFabricObject<fabric.Triangle>);
@@ -36,7 +36,7 @@ export const createCircle = (pointer: PointerEvent) => {
   return new fabric.Circle({
     left: pointer.x,
     top: pointer.y,
-    radius: 100,
+    radius: 0,
     fill: "#aabbcc",
     objectId: uuidv4(),
   } as any);
@@ -44,7 +44,7 @@ export const createCircle = (pointer: PointerEvent) => {
 
 export const createLine = (pointer: PointerEvent) => {
   return new fabric.Line(
-    [pointer.x, pointer.y, pointer.x + 100, pointer.y + 100],
+    [pointer.x, pointer.y, pointer.x + 0, pointer.y + 0],
     {
       stroke: "#aabbcc",
       strokeWidth: 2,
