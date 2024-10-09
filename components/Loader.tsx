@@ -9,6 +9,7 @@ const Loader = () => (
       height={100}
       className='object-contain'
       unoptimized
+      priority
     />
     <p className='text-sm font-bold text-primary-grey-300'>Loading...</p>
   </div>

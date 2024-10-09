@@ -21,7 +21,7 @@ export function Room({ children }: { children: ReactNode }) {
       }}
     >
       <ClientSideSuspense fallback={<Loader />}>
-        {() => children}
+        {children}
       </ClientSideSuspense>
     </RoomProvider>
   );
